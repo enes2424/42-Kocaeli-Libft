@@ -10,18 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t				i;
-	unsigned char		*tmp;
+	char	*tmp;
 
-	i = 0;
-	tmp = (unsigned char *)s;
-	while (i < n)
-	{
-		tmp[i] = 0;
-		i++;
-	}
+	tmp = (char *)s;
+	while (n-- > 0)
+		tmp[n] = 0;
 }

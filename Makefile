@@ -46,7 +46,7 @@ BONUS	=	ft_lstnew.c \
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
 
-CC = gcc
+CC = cc
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
@@ -57,12 +57,9 @@ $(NAME) :
 		$(CC) $(FLAGS) -c $(SRCS)
 		ar rcs $(NAME) $(OBJS)
 
-bonus: 
+bonus:
 		$(CC) $(FLAGS) -c $(SRCS) $(BONUS)
 		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-%.o : %.c
-	$(CC) -c $^
 
 clean :
 	$(RM) $(OBJS) $(BONUS_OBJS)

@@ -10,28 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 int	ft_atoi(const char *str)
 {
-	long	i;
-	long	num;
-	int		is_negative;
+	size_t	i;
+	int		num;
+	int		sign;
 
 	i = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	sign = -2 * (str[i] == '-') + 1;
+	i += sign == -1 || str[i] == '+';
 	num = 0;
-	is_negative = 0;
-	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
-		i++;
-	if (str[i] != '\0' && str[i] == '-')
-	{
-		is_negative = 1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-		num = (num * 10) + (str[i++] - '0');
-	if (is_negative == 1)
-		return (-num);
+	while (str[i] >= 48 && str[i] <= 57)
+		num = num * 10 + sign * (str[i++] - 48);
 	return (num);
 }
