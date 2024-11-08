@@ -53,13 +53,14 @@ NAME = libft.a
 
 all : $(NAME)
 
-$(NAME) :
-		$(CC) $(FLAGS) -c $(SRCS)
+$(NAME): $(OBJS)
 		ar rcs $(NAME) $(OBJS)
 
-bonus:
-		$(CC) $(FLAGS) -c $(SRCS) $(BONUS)
-		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus: $(BONUS_OBJS)
+		ar rcs $(NAME) $(BONUS_OBJS)
+
+%.o: %.c
+	cc -Wall -Wextra -Werror -c $< -o $@
 
 clean :
 	$(RM) $(OBJS) $(BONUS_OBJS)
