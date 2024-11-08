@@ -16,7 +16,10 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
-		return ((void)write(fd, "-2147483648", 11));
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
 	if (n < 0)
 		return (write(fd, "-", 1), ft_putnbr_fd(-n, fd));
 	if (n > 9)
