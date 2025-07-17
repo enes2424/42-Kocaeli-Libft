@@ -28,9 +28,11 @@ $(BONUS_OBJS): libft.h
 $(NAME): $(OBJS)
 		ar rcs $(NAME) $(OBJS)
 
-bonus: $(BONUS_OBJS)
-		ar rcs $(NAME) $(BONUS_OBJS)
+bonus: .bonus
 
+.bonus: $(BONUS_OBJS)
+		ar rcs $(NAME) $(BONUS_OBJS)
+		@touch .bonus
 
 %.o: %.c
 	cc -Wall -Wextra -Werror -c $< -o $@
