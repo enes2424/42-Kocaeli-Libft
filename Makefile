@@ -26,20 +26,20 @@ $(OBJS): libft.h
 $(BONUS_OBJS): libft.h
 
 $(NAME): $(OBJS)
-		@ar rcs $(NAME) $(OBJS)
+		ar rcs $(NAME) $(OBJS)
 
 bonus: $(BONUS_OBJS)
-		@ar rcs $(NAME) $(BONUS_OBJS)
+		ar rcs $(NAME) $(BONUS_OBJS)
 
 
 %.o: %.c
-	@cc -Wall -Wextra -Werror -c $< -o $@
+	cc -Wall -Wextra -Werror -c $< -o $@
 
 clean :
-	@rm -rf $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re : fclean $(NAME)
 
